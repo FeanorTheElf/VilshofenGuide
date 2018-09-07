@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/configure_sight_list_delete_item" android:title="@string/delete_sight_in_list_context_menu"></item>
+<item android:id="@+id/configure_sight_list_show_sight_description" android:title="@string/show_sight_description"></item>
+<item android:id="@+id/configure_sight_list_add_sight" android:title="@string/add_sight_in_list_context_menu"></item>
+<item android:id="@+id/configure_sight_list_cancel_context_menu" android:title="@string/cancel"></item>
+</menu>
