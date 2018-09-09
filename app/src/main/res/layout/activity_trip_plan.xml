@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context=".StartActivity">
+    tools:context="view.StartActivity">
 
     <include layout="@layout/content_trip_plan" />
 
@@ -12,29 +12,29 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
+        android:background="@color/a61919"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
-        android:title="@string/routenplaner"
-        android:background="@color/a61919">
+        android:title="@string/routenplaner">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="@color/a61919"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:background="@color/a61919"
-            android:title="@string/routenplaner">
+            android:fitsSystemWindows="true"
+            android:title="@string/routenplaner"
+            app:contentScrim="@color/a61919"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
+                android:background="@color/a61919"
                 android:title="@string/routenplaner"
-                android:background="@color/a61919"/>
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
