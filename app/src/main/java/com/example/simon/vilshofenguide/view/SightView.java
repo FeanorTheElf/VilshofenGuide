@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.example.simon.vilshofenguide.pathfinding.Sight;
+import com.example.simon.vilshofenguide.sightseeing.Sight;
 
 /**
  * Created by Simon on 02.03.2016.

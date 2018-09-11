@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.pathfinding.PathChangeController;
-import com.example.simon.vilshofenguide.pathfinding.SightInitializer;
-import com.example.simon.vilshofenguide.pathfinding.SightManager;
+import com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller.PathChangeController;
+import com.example.simon.vilshofenguide.sightseeing.SightInitializer;
+import com.example.simon.vilshofenguide.sightseeing.SightManager;
 
 import java.net.MalformedURLException;
 import java.util.concurrent.ExecutionException;

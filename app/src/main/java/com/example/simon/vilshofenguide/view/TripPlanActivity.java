@@ -13,8 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -24,14 +22,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.pathfinding.Category;
-import com.example.simon.vilshofenguide.pathfinding.Path;
-import com.example.simon.vilshofenguide.pathfinding.PathChangeController;
-import com.example.simon.vilshofenguide.pathfinding.Sight;
-import com.example.simon.vilshofenguide.pathfinding.SightManager;
-import com.example.simon.vilshofenguide.pathfinding.TripConfigurations;
+import com.example.simon.vilshofenguide.sightseeing.Category;
+import com.example.simon.vilshofenguide.sightseeing.Path;
+import com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller.PathChangeController;
+import com.example.simon.vilshofenguide.sightseeing.Sight;
+import com.example.simon.vilshofenguide.sightseeing.SightManager;
+import com.example.simon.vilshofenguide.sightseeing.TripConfigurations;
 
-import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 
 /**

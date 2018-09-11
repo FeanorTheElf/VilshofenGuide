@@ -6,11 +6,11 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.pathfinding.GoogleMapsPathfinder;
-import com.example.simon.vilshofenguide.pathfinding.Path;
-import com.example.simon.vilshofenguide.pathfinding.PathChangeController;
-import com.example.simon.vilshofenguide.pathfinding.Sight;
-import com.example.simon.vilshofenguide.pathfinding.SightManager;
+import com.example.simon.vilshofenguide.sightseeing.GoogleMapsDirectionsClient;
+import com.example.simon.vilshofenguide.sightseeing.Path;
+import com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller.PathChangeController;
+import com.example.simon.vilshofenguide.sightseeing.Sight;
+import com.example.simon.vilshofenguide.sightseeing.SightManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,7 +26,7 @@ public class VilshofenMapActivity extends FragmentActivity implements OnMapReady
     private PathChangeController pathChanger;
     private SightManager manager;
     private Sight lastClicked;
-    private GoogleMapsPathfinder googleMapsPathfinder;
+    private GoogleMapsDirectionsClient googleMapsPathfinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class VilshofenMapActivity extends FragmentActivity implements OnMapReady
             this.pathChanger = (PathChangeController)getIntent().getSerializableExtra("path");
         }
         this.manager = (SightManager)getIntent().getSerializableExtra("sightManager");
-        this.googleMapsPathfinder = new GoogleMapsPathfinder();
+        this.googleMapsPathfinder = new GoogleMapsDirectionsClient();
     }
 
     /**

@@ -12,8 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.pathfinding.PathChangeController;
-import com.example.simon.vilshofenguide.pathfinding.SightManager;
+import com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller.PathChangeController;
+import com.example.simon.vilshofenguide.sightseeing.SightManager;
 
 public class CreditsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

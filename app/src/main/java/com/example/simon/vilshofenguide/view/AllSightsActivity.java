@@ -11,9 +11,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.pathfinding.Category;
-import com.example.simon.vilshofenguide.pathfinding.Sight;
-import com.example.simon.vilshofenguide.pathfinding.SightManager;
+import com.example.simon.vilshofenguide.sightseeing.Category;
+import com.example.simon.vilshofenguide.sightseeing.Sight;
+import com.example.simon.vilshofenguide.sightseeing.SightManager;
 
 import java.util.HashMap;
 import java.util.LinkedList;
