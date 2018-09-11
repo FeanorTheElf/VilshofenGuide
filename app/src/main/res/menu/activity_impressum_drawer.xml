@@ -13,7 +13,7 @@
         <item
             android:id="@+id/back"
             android:icon="@drawable/zurueckpfeil"
-            android:title="Zurück zur Startseite"/>
+            android:title="@string/back_to_start"/>
     </group>
 
 </menu>

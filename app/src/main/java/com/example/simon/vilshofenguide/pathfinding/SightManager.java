@@ -17,10 +17,6 @@ public class SightManager implements Serializable{
     private List<NamedRoute> predefinedRoutes;
     private Map<Sight, Map<Sight, Double>> distances;
     private Map<Category, double[]> params = new HashMap<>();
-    /**
-     * For test purposes
-     */
-    private boolean use1AsDistance = false;
 
     public static SightManager getEmptySightManager(){
         SightManager result = new SightManager();
@@ -42,7 +38,10 @@ public class SightManager implements Serializable{
     }
 
     public void useOneAsDistance(boolean value){
-        this.use1AsDistance = value;
+        /*
+      For test purposes
+     */
+        boolean use1AsDistance = value;
     }
 
     public Sight getSightWithName(String stringValueOfSight){

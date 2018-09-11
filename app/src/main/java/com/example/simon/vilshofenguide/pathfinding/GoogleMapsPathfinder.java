@@ -55,7 +55,7 @@ public class GoogleMapsPathfinder{
 
     private List<LatLng> getPath(JSONObject downloadedJSON){
 
-        List<LatLng> path = new ArrayList<LatLng>() ;
+        List<LatLng> path = new ArrayList<>() ;
         JSONArray steps = null;
 
         try {
@@ -66,9 +66,8 @@ public class GoogleMapsPathfinder{
                 String polyline = "";
                 polyline = (String)((JSONObject)((JSONObject)steps.get(i)).get("polyline")).get("points");
                 List<LatLng> list = decodePoly(polyline);
-                /** Traversing all points */
                 for(int k = 0; k < list.size(); k++){
-                    path.add((LatLng)list.get(k));
+                    path.add(list.get(k));
                 }
             }
         } catch (JSONException e) {
@@ -124,7 +123,7 @@ public class GoogleMapsPathfinder{
      * */
     private List<LatLng> decodePoly(String encoded) {
 
-        List<LatLng> poly = new ArrayList<LatLng>();
+        List<LatLng> poly = new ArrayList<>();
         int index = 0, len = encoded.length();
         int lat = 0, lng = 0;
 

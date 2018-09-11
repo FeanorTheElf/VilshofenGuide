@@ -22,8 +22,7 @@ public class PathfinderNew {
 
         Map<PathNode, PathNode> closed = new HashMap<>();
 
-        Set<Sight> allSights = new HashSet<>();
-        allSights.addAll(tc.getSightManager().getAllSights());
+        Set<Sight> allSights = new HashSet<>(tc.getSightManager().getAllSights());
         allSights.removeAll(tc.getExcludedSights());
 
         PathNode current;

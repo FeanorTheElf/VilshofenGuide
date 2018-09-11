@@ -8,13 +8,11 @@ import com.example.simon.vilshofenguide.R;
 
 public class ErrorActivity extends AppCompatActivity {
 
-    private Exception exception;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_error);
-        exception = (Exception) getIntent().getSerializableExtra("exception");
+        Exception exception = (Exception) getIntent().getSerializableExtra("exception");
         TextView exceptionView = (TextView)findViewById(R.id.exception_text);
         exceptionView.setText(exception.getMessage());
     }

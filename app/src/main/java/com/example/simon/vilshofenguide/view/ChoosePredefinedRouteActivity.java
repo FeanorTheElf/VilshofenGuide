@@ -42,7 +42,7 @@ public class ChoosePredefinedRouteActivity extends AppCompatActivity implements 
     }
 
     private void initList(){
-        ListAdapter listAdapter = new ArrayAdapter<NamedRoute>(this, android.R.layout.simple_spinner_item, getPredefinedRoutes());
+        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, getPredefinedRoutes());
         this.list.setAdapter(listAdapter);
     }
 

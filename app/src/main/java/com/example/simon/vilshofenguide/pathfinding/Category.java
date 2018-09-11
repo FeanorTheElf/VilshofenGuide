@@ -16,7 +16,7 @@ public enum Category {
         return StringRessourceManager.getInstance().getString(id);
     }
 
-    private Category(int id){
+    Category(int id){
         this.id = id;
     }
 }

@@ -16,12 +16,7 @@ class DisableFollowLinksWebViewClient extends WebViewClient{
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url){
-        if (Uri.parse(url).getHost().equals(SightInitializer.serverURL)) {
-            // This is my web site, so do not override; let my WebView load the page
-            return false;
-        }else{
-            return true;
-        }
+        return !Uri.parse(url).getHost().equals(SightInitializer.serverURL);
     }
 }
 
@@ -30,20 +25,16 @@ public class SightDetailActivity extends AppCompatActivity {
     private static final String englishHTMLFileEnding = "EN";
     private static final String germanHTMLFileEnding = "DE";
 
-    private PathChangeController pathChanger;
-    private SightManager manager;
-    private Sight s;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sight_detail);
 
         if (getIntent().getSerializableExtra("path") != null){
-            this.pathChanger = (PathChangeController)getIntent().getSerializableExtra("path");
+            PathChangeController pathChanger = (PathChangeController) getIntent().getSerializableExtra("path");
         }
-        this.manager = (SightManager)getIntent().getSerializableExtra("sightManager");
-        this.s = (Sight)getIntent().getSerializableExtra("sight");
+        SightManager manager = (SightManager) getIntent().getSerializableExtra("sightManager");
+        Sight s = (Sight) getIntent().getSerializableExtra("sight");
 
         WebView webView = (WebView)findViewById(R.id.sight_detail_view);
         webView.getSettings().setJavaScriptEnabled(true);

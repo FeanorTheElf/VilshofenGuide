@@ -31,8 +31,8 @@ public class PathNode {
             return containsIncludedSights;
         }
         Set<Sight> leftSights = new HashSet<>(tc.getIncludedSights());
-        for (int i = 0; i < path.length; i++){
-            leftSights.remove(path[i]);
+        for (Sight aPath : path) {
+            leftSights.remove(aPath);
         }
         this.containsIncludedSights = leftSights.isEmpty();
         this.containsIncludedSightsIsSet = true;
@@ -83,8 +83,8 @@ public class PathNode {
             return new LinkedList<>();
         }
         double timeLeft = tc.getTotalTripMinutes() - getLengthInMinutes();
-        for (int i = 0; i < path.length; i++){
-            allSights.remove(path[i]);
+        for (Sight aPath1 : path) {
+            allSights.remove(aPath1);
         }
         if (tc.sameStartEndSight()){
             allSights.add(this.path[0]);
@@ -99,8 +99,8 @@ public class PathNode {
                 result.add(new PathNode(newPath, getLengthInMinutes() + moreTime));
             }
         }
-        for (int i = 0; i < path.length; i++){
-            allSights.add(path[i]);
+        for (Sight aPath : path) {
+            allSights.add(aPath);
         }
         Collections.sort(result, new Comparator<PathNode>() {
             @Override

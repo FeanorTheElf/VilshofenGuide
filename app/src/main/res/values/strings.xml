@@ -131,4 +131,9 @@
     <string name="error_occured">Es ist ein Fehler aufgetreten:</string>
     <string name="wipe_right"><![CDATA[>> wischen >>]]></string>
     <string name="routenplaner">Routenplaner</string>
+    <string name="back_to_start">Zurück zur Startseite</string>
+    <string name="routeplaner">Routenplaner</string>
+    <string name="map">Karte</string>
+    <string name="sights">Sehenswürdigkeiten</string>
+    <string name="credits_text">P-Seminar Informatik 2015/2017: Bernhard Baumann, Simon Pohmann, Eric Thier, Delwyn Dietrich, Lukas Rieger, Christian Kasberger, Valentin Wierer</string>
 </resources>

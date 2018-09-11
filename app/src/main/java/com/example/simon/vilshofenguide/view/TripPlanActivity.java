@@ -56,7 +56,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
         choosenPathView = (ListView)findViewById(R.id.route_list);
         registerForContextMenu(this.choosenPathView);
 
-        ((Button)findViewById(R.id.view_route_on_map)).setEnabled(false);
+        findViewById(R.id.view_route_on_map).setEnabled(false);
 
         initSpinners();
 
@@ -71,7 +71,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
 
     private void initTimeFields(){
         Spinner t = ((Spinner) findViewById(R.id.trip_time));
-        SpinnerAdapter timeSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, possibleTimes);
+        SpinnerAdapter timeSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, possibleTimes);
         t.setAdapter(timeSpinnerAdapter);
     }
 
@@ -80,15 +80,15 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
      */
     private void initSpinners() {
         Spinner arrivalSpinner = (Spinner)findViewById(R.id.arrival_place);
-        SpinnerAdapter arrivalSpinnerAdapter = new ArrayAdapter<Sight>(this, android.R.layout.simple_spinner_item, manager.getAllSightsAsList());
+        SpinnerAdapter arrivalSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, manager.getAllSightsAsList());
         arrivalSpinner.setAdapter(arrivalSpinnerAdapter);
 
         Spinner departureSpinner = (Spinner)findViewById(R.id.departure_place);
-        SpinnerAdapter departureSpinnerAdapter = new ArrayAdapter<Sight>(this, android.R.layout.simple_spinner_item, manager.getAllSightsAsList());
+        SpinnerAdapter departureSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, manager.getAllSightsAsList());
         departureSpinner.setAdapter(departureSpinnerAdapter);
 
         Spinner focusSpinner = (Spinner)findViewById(R.id.focus);
-        SpinnerAdapter focusSpinnerAdapter = new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_item, Category.values());
+        SpinnerAdapter focusSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Category.values());
         focusSpinner.setSelection(3);
         focusSpinner.setAdapter(focusSpinnerAdapter);
     }
@@ -102,7 +102,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
             Toast.makeText(getApplicationContext(), StringRessourceManager.getInstance().getString(R.string.exception_no_such_route), Toast.LENGTH_LONG).show();
             return;
         }
-        ListAdapter listAdapter = new ArrayAdapter<Sight>(this, android.R.layout.simple_spinner_item, p.asList());
+        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, p.asList());
         this.choosenPathView.setAdapter(listAdapter);
         TextView calculatedDepartureTime = (TextView)findViewById(R.id.calculated_departure_time);
     }
@@ -131,7 +131,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
         try{
             this.pathChanger.setTripCofigurations(tc);
             this.pathChanger.calculateRoute();
-            ((Button)findViewById(R.id.view_route_on_map)).setEnabled(true);
+            findViewById(R.id.view_route_on_map).setEnabled(true);
         }catch(Exception e){
             changeToErrorActivity(e);
         }

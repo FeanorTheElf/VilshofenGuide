@@ -36,7 +36,7 @@
         android:layout_alignStart="@+id/button2"
         android:layout_marginTop="40dp"
         android:textColor="#ffffff"
-        android:text="Routenplaner" />
+        android:text="@string/routeplaner" />
 
     <Button
         android:layout_width="@dimen/zwidth"
@@ -48,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:textColor="#ffffff"
-        android:text="Karte" />
+        android:text="@string/map" />
 
     <Button
         android:layout_width="@dimen/zwidth"
@@ -61,7 +61,7 @@
         android:layout_alignLeft="@+id/button3"
         android:layout_alignStart="@+id/button3"
         android:textColor="#ffffff"
-        android:text="Sehenswürdigkeiten" />
+        android:text="@string/sights" />
 
     <Button
         android:layout_width="@dimen/zwidth"
@@ -85,6 +85,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp" />
 
 </RelativeLayout>

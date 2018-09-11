@@ -7,6 +7,6 @@ import com.example.simon.vilshofenguide.pathfinding.Path;
  */
 public interface PathShower {
 
-    public void setPath(Path p);
+    void setPath(Path p);
 
 }

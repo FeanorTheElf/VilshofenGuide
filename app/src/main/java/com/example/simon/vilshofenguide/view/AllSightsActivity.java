@@ -35,7 +35,7 @@ public class AllSightsActivity extends AppCompatActivity implements AdapterView.
         sightList.add(new Sight(100001, new HashMap<Category, Integer>(), 0, 0, "", "", "", 0));
         sightList.add(new Sight(100002, new HashMap<Category, Integer>(), 0, 0, "", "", "", 0));
         allSights = (ListView) findViewById(R.id.all_sights_list);
-        ListAdapter listAdapter = new ArrayAdapter<Sight>(this, android.R.layout.simple_list_item_1, sightList);
+        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, sightList);
         this.allSights.setAdapter(listAdapter);
 
         allSights.setOnItemClickListener(this);

@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="P-Seminar Informatik 2015/2017: Bernhard Baumann, Simon Pohmann, Eric Thier, Delwyn Dietrich, Lukas Rieger, Christian Kasberger, Valentin Wierer"
+        android:text="@string/credits_text"
         android:id="@+id/textView10"
         android:textAlignment="center"
         android:layout_alignParentBottom="true"
