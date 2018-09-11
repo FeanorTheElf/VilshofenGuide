@@ -15,7 +15,8 @@
         android:background="@color/a61919"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
-        android:title="@string/routenplaner">
+        android:title="@string/routenplaner"
+        app:expanded="false">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
