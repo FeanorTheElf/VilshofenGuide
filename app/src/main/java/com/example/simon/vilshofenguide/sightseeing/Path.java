@@ -124,12 +124,16 @@ public class Path implements Cloneable, Serializable, Iterable<Sight>{
     }
 
     public Path(Sight start){
-        this.path = new LinkedList<>();
+        this();
         this.path.add(start);
     }
 
     public Path(){
-        this.path = new LinkedList<>();
+        this(new LinkedList<>());
+    }
+
+    public Path(List<Sight> path){
+        this.path = path;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller;
 
-import com.example.simon.vilshofenguide.sightseeing.pathfinder.PathfinderNew;
+import com.example.simon.vilshofenguide.sightseeing.SightManager;
+import com.example.simon.vilshofenguide.sightseeing.pathfinder.Pathfinder;
 import com.example.simon.vilshofenguide.sightseeing.Path;
 import com.example.simon.vilshofenguide.sightseeing.Sight;
 import com.example.simon.vilshofenguide.sightseeing.TripConfigurations;
@@ -18,24 +19,24 @@ public class PathChangeController implements Serializable{
     private transient PathShower pathShower;
     private TripConfigurations tg;
 
-    public void itemDeleted(Sight s) throws ExecutionException, InterruptedException {
-        tg.excludeSight(s);
-        p = new PathfinderNew().calculatePath(tg);
+    public void itemDeleted(Sight s, SightManager manager) throws ExecutionException, InterruptedException {
+        tg.toggleSightExcluded(s);
+        p = new Pathfinder(manager).calculatePath(tg);
         informPathShower();
     }
 
-    public void itemDeleted(int numberInPath) throws ExecutionException, InterruptedException {
-        this.itemDeleted(p.getSightAt(numberInPath));
+    public void itemDeleted(int numberInPath, SightManager manager) throws ExecutionException, InterruptedException {
+        this.itemDeleted(p.getSightAt(numberInPath), manager);
     }
 
-    public void itemAdded(Sight s) throws ExecutionException, InterruptedException {
-        tg.includeSight(s);
-        p = new PathfinderNew().calculatePath(tg);
+    public void itemAdded(Sight s, SightManager manager) {
+        tg.toggleSightIncluded(s);
+        p = new Pathfinder(manager).calculatePath(tg);
         informPathShower();
     }
 
-    public void calculateRoute() throws ExecutionException, InterruptedException {
-        p = new PathfinderNew().calculatePath(tg);
+    public void calculateRoute(SightManager manager) {
+        p = new Pathfinder(manager).calculatePath(tg);
         informPathShower();
     }
 

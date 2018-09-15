@@ -29,6 +29,7 @@ import com.example.simon.vilshofenguide.sightseeing.Sight;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 import com.example.simon.vilshofenguide.sightseeing.TripConfigurations;
 
+import java.util.LinkedList;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -77,11 +78,11 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
      */
     private void initSpinners() {
         Spinner arrivalSpinner = (Spinner)findViewById(R.id.arrival_place);
-        SpinnerAdapter arrivalSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, manager.getAllSightsAsList());
+        SpinnerAdapter arrivalSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new LinkedList<>(manager.getAllSights()));
         arrivalSpinner.setAdapter(arrivalSpinnerAdapter);
 
         Spinner departureSpinner = (Spinner)findViewById(R.id.departure_place);
-        SpinnerAdapter departureSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, manager.getAllSightsAsList());
+        SpinnerAdapter departureSpinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new LinkedList<>(manager.getAllSights()));
         departureSpinner.setAdapter(departureSpinnerAdapter);
 
         Spinner focusSpinner = (Spinner)findViewById(R.id.focus);
@@ -120,14 +121,14 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
 
         Category c = (Category)((Spinner) findViewById(R.id.focus)).getSelectedItem();
 
-        TripConfigurations tc = TripConfigurations.getDefaultTripConfigurations(c, tripTime, manager);
+        TripConfigurations tc = TripConfigurations.getDefaultTripConfigurations(c, tripTime, manager.getAnySight(), manager.getAnySight());
 
         tc.setStartSight((Sight)((Spinner)findViewById(R.id.arrival_place)).getSelectedItem());
         tc.setEndSight((Sight)((Spinner)findViewById(R.id.departure_place)).getSelectedItem());
 
         try{
             this.pathChanger.setTripCofigurations(tc);
-            this.pathChanger.calculateRoute();
+            this.pathChanger.calculateRoute(manager);
             findViewById(R.id.view_route_on_map).setEnabled(true);
         }catch(Exception e){
             changeToErrorActivity(e);
@@ -176,12 +177,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
             default:
                 for (Sight s : this.manager.getAllSights()){
                     if (s.getId() == item.getItemId()){
-                        try {
-                            this.pathChanger.itemAdded(s);
-                        } catch (ExecutionException | InterruptedException e) {
-                            changeToErrorActivity(e);
-                            return false;
-                        }
+                        this.pathChanger.itemAdded(s, manager);
                         return true;
                     }
                 }
@@ -209,7 +205,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
                 return true;
             case R.id.configure_sight_list_delete_item:
                 try {
-                    this.pathChanger.itemDeleted(manager.getSightById(this.choosenSightIdInList));
+                    this.pathChanger.itemDeleted(manager.getSightById(this.choosenSightIdInList), manager);
                 } catch (ExecutionException | InterruptedException e) {
                     changeToErrorActivity(e);
                     return false;

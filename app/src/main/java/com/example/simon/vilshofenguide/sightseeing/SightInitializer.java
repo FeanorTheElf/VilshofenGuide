@@ -70,7 +70,7 @@ public class SightInitializer {
 
         protected Void doInBackground(Object... params) {
             URL url = (URL) params[0];
-            SightManager m = (SightManager) params[1];
+            ConfigurableSightManager m = (ConfigurableSightManager) params[1];
             InputStream inputStream = null;
             HttpURLConnection urlConnection = null;
             try {

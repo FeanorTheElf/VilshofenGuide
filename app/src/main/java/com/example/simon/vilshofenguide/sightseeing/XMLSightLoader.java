@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class XMLSightLoader extends DefaultHandler {
 
-    private SightManager m;
+    private ConfigurableSightManager m;
 
     private String lastRouteEnglishName;
     private String lastRouteGermanName;
@@ -30,7 +30,7 @@ public class XMLSightLoader extends DefaultHandler {
     private Map<Category, Integer> lastSightPoints = new HashMap<>();
 
     public void startDocument() throws SAXException {
-        m = SightManager.getEmptySightManager();
+        m = ConfigurableSightManager.getEmptySightManager();
     }
 
     public void startElement(String uri, String localName, String qName,

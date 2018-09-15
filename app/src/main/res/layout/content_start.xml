@@ -11,70 +11,62 @@
     tools:showIn="@layout/activity_start">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/app_title"
         android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:textSize="40sp"
-        android:textColor="#5e5c5c"
-        android:layout_above="@+id/button"
-        android:layout_toStartOf="@+id/button"
-        android:layout_alignRight="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:layout_alignEnd="@+id/button"
-        android:layout_toLeftOf="@+id/button" />
+        android:layout_alignParentTop="true"
+        android:text="@string/app_title"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#5e5c5c"
+        android:textSize="40sp"
+        android:layout_alignRight="@+id/button" />
 
     <Button
-        android:layout_width="@dimen/zwidth"
-        android:layout_height="@dimen/zzzheight"
         android:id="@+id/button"
-        android:onClick="changeToTripPlanActivity"
-        android:background="@drawable/button"
-        android:layout_above="@+id/button2"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_marginTop="40dp"
-        android:textColor="#ffffff"
-        android:text="@string/routeplaner" />
-
-    <Button
         android:layout_width="@dimen/zwidth"
         android:layout_height="@dimen/zzzheight"
-        android:id="@+id/button2"
-        android:onClick="changeToVilshofenMap"
-        android:background="@drawable/button"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:textColor="#ffffff"
-        android:text="@string/map" />
-
-    <Button
-        android:layout_width="@dimen/zwidth"
-        android:layout_height="@dimen/zzzheight"
-        android:id="@+id/choose_sight"
-        android:onClick="changeToChooseSightActivity"
+        android:layout_marginTop="150dp"
         android:background="@drawable/button"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="40dp"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:textColor="#ffffff"
-        android:text="@string/sights" />
+        android:onClick="changeToTripPlanActivity"
+        android:text="@string/routeplaner"
+        android:textColor="#ffffff" />
 
     <Button
+        android:id="@+id/button2"
         android:layout_width="@dimen/zwidth"
         android:layout_height="@dimen/zzzheight"
-        android:onClick="changeToChoosePredefinedRouteActivity"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button"
+        android:onClick="changeToCreditsActivity"
+        android:text="@string/credits"
+        android:textColor="#ffffff" />
+
+    <Button
         android:id="@+id/button3"
+        android:layout_width="@dimen/zwidth"
+        android:layout_height="@dimen/zzzheight"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
         android:background="@drawable/button"
-        android:layout_below="@+id/button2"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_marginTop="40dp"
-        android:textColor="#ffffff"
-        android:text="@string/predefined_routes_label" />
+        android:onClick="changeToVilshofenMap"
+        android:text="@string/map"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/choose_sight"
+        android:layout_width="@dimen/zwidth"
+        android:layout_height="@dimen/zzzheight"
+        android:layout_centerInParent="true"
+        android:background="@drawable/button"
+        android:onClick="changeToChooseSightActivity"
+        android:text="@string/sights"
+        android:textColor="#ffffff" />
 
     <ImageView
         android:layout_width="@dimen/aaaaa"

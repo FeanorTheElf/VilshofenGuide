@@ -47,7 +47,7 @@ public class StartActivity extends StaticContextActivity {
         SightInitializer s = new SightInitializer();
         try {
             sightTask = s.downloadSightManager();
-        } catch (MalformedURLException | ExecutionException | InterruptedException e) {
+        } catch (Exception e) {
             changeToErrorActivity(e);
         }
         return null;
@@ -70,14 +70,6 @@ public class StartActivity extends StaticContextActivity {
     private void changeToErrorActivity(Exception e){
         Intent intent = new Intent(this, ErrorActivity.class);
         intent.putExtra("exception", e);
-        startActivity(intent);
-    }
-
-    public void changeToChoosePredefinedRouteActivity(View view){
-        waitForManagerInitialized();
-        Intent intent = new Intent(this, ChoosePredefinedRouteActivity.class);
-        intent.putExtra("path", new PathChangeController());
-        intent.putExtra("sightManager", manager);
         startActivity(intent);
     }
 

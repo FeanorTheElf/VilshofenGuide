@@ -98,7 +98,7 @@ public class VilshofenMapActivity extends FragmentActivity implements OnMapReady
     }
 
     public boolean onMarkerClick(Marker m){
-        Sight s = manager.getSightWithName(m.getTitle());
+        Sight s = manager.getSightByName(m.getTitle());
         if (lastClicked != null && s.equals(lastClicked)){
             changeToSightDetailActivity(s);
         }
