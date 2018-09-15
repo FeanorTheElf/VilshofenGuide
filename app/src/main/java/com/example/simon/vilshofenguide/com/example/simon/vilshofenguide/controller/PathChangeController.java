@@ -19,13 +19,13 @@ public class PathChangeController implements Serializable{
     private transient PathShower pathShower;
     private TripConfigurations tg;
 
-    public void itemDeleted(Sight s, SightManager manager) throws ExecutionException, InterruptedException {
+    public void itemDeleted(Sight s, SightManager manager) {
         tg.toggleSightExcluded(s);
         p = new Pathfinder(manager).calculatePath(tg);
         informPathShower();
     }
 
-    public void itemDeleted(int numberInPath, SightManager manager) throws ExecutionException, InterruptedException {
+    public void itemDeleted(int numberInPath, SightManager manager) {
         this.itemDeleted(p.getSightAt(numberInPath), manager);
     }
 

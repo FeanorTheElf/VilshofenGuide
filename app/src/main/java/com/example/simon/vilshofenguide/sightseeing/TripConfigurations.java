@@ -2,10 +2,7 @@ package com.example.simon.vilshofenguide.sightseeing;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Simon on 17.02.2016.
@@ -17,8 +14,8 @@ public class TripConfigurations implements Serializable{
     private Sight startSight;
     private Sight endSight;
 
-    private Set<Sight> excludedSights = new HashSet<>();
-    private Set<Sight> includedSights = new HashSet<>();
+    private final Set<Sight> excludedSights = new HashSet<>();
+    private final Set<Sight> includedSights = new HashSet<>();
 
     public Set<Sight> getIncludedSights(){ return this.includedSights; }
 

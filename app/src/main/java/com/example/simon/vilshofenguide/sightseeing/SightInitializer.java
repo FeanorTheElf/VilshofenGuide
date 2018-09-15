@@ -25,7 +25,7 @@ public class SightInitializer {
     public static final String serverURL = "www.vilshofen.info";
     public static final String serverAdress = "http://" + serverURL + "/";
 
-    public AsyncTask<?, ?, SightManager> downloadSightManager() throws MalformedURLException, ExecutionException, InterruptedException {
+    public AsyncTask<?, ?, SightManager> downloadSightManager() throws MalformedURLException {
         DownloadTask d = new DownloadTask();
         d.execute(new URL(serverAdress + "sight_data.txt"));
         return d;

@@ -6,24 +6,19 @@ import com.example.simon.vilshofenguide.sightseeing.Sight;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 import com.example.simon.vilshofenguide.sightseeing.TripConfigurations;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Simon on 29.11.2016.
  */
 public class Pathfinder {
 
-    private SightManager manager;
+    private final SightManager manager;
 
     private double calcPathDistance(List<Sight> path){
         Iterator<Sight> it = path.iterator();
@@ -95,7 +90,7 @@ public class Pathfinder {
     }
 
     private void calcNodeInsertionData(List<Sight> result, double pathDist,
-                                       Map<Sight, Integer> bestInsertBeforeIndices, Map<Sight, Double> distsToPath, Category c) {
+                                       Map<Sight, Integer> bestInsertBeforeIndices, Map<Sight, Double> distsToPath) {
         for (Sight node : manager.getAllSights()){
             if (result.contains(node)){
                 bestInsertBeforeIndices.put(node, -1);
@@ -119,7 +114,7 @@ public class Pathfinder {
             double pathDist = calcPathDistance(result);
             Map<Sight, Integer> bestInsertBeforeIndices = new HashMap<>();
             Map<Sight, Double> distancesToPath = new HashMap<>();
-            calcNodeInsertionData(result, pathDist, bestInsertBeforeIndices, distancesToPath, tc.getCategory());
+            calcNodeInsertionData(result, pathDist, bestInsertBeforeIndices, distancesToPath);
 
             Sight newSight = findNodeWithMaxEvaluation(tc.getTotalTripMinutes(), result, pathDist, distancesToPath, tc.getCategory());
             if (newSight == null)

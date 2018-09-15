@@ -12,15 +12,15 @@ import com.example.simon.vilshofenguide.sightseeing.Sight;
 import com.example.simon.vilshofenguide.sightseeing.SightInitializer;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 
-class DisableFollowLinksWebViewClient extends WebViewClient{
-
-    @Override
-    public boolean shouldOverrideUrlLoading(WebView view, String url){
-        return !Uri.parse(url).getHost().equals(SightInitializer.serverURL);
-    }
-}
-
 public class SightDetailActivity extends AppCompatActivity {
+
+    private static class DisableFollowLinksWebViewClient extends WebViewClient{
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url){
+            return !Uri.parse(url).getHost().equals(SightInitializer.serverURL);
+        }
+    }
 
     private static final String englishHTMLFileEnding = "EN";
     private static final String germanHTMLFileEnding = "DE";
@@ -30,10 +30,6 @@ public class SightDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sight_detail);
 
-        if (getIntent().getSerializableExtra("path") != null){
-            PathChangeController pathChanger = (PathChangeController) getIntent().getSerializableExtra("path");
-        }
-        SightManager manager = (SightManager) getIntent().getSerializableExtra("sightManager");
         Sight s = (Sight) getIntent().getSerializableExtra("sight");
 
         WebView webView = (WebView)findViewById(R.id.sight_detail_view);

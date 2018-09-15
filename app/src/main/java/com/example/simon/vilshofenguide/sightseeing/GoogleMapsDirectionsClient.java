@@ -2,8 +2,6 @@ package com.example.simon.vilshofenguide.sightseeing;
 
 import android.os.AsyncTask;
 
-import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.view.StringRessourceManager;
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
@@ -29,11 +27,11 @@ public class GoogleMapsDirectionsClient {
     private LatLng destination;
     private JSONObject downloadedJSON;
 
-    private String getDirectionsUrl(LatLng origin, LatLng dest) {
+    private String getDirectionsUrl(LatLng origin, LatLng dest, String googleMapsKey) {
 
         String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
         String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
-        String str_key = "key=" + StringRessourceManager.getInstance().getString(R.string.google_maps_key);
+        String str_key = "key=" + googleMapsKey;
 
         String parameters = str_origin + "&" + str_dest + "&mode=walking";
         String output = "json";
@@ -42,10 +40,10 @@ public class GoogleMapsDirectionsClient {
         return url;
     }
 
-    private void download() {
+    private void download(String googleMapsKey) {
         try {
             //Use get() as a method to join the task
-            this.downloadedJSON = new DownloadTask().execute().get();
+            this.downloadedJSON = new DownloadTask().execute(googleMapsKey).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -56,19 +54,17 @@ public class GoogleMapsDirectionsClient {
     private List<LatLng> getPath(JSONObject downloadedJSON){
 
         List<LatLng> path = new ArrayList<>() ;
-        JSONArray steps = null;
+        JSONArray steps;
 
         try {
             steps = ((JSONObject)  ((JSONObject) downloadedJSON.getJSONArray("routes").get(0)  ).getJSONArray("legs").get(0))
                     .getJSONArray("steps");
 
             for(int i = 0; i < steps.length(); i++){
-                String polyline = "";
+                String polyline;
                 polyline = (String)((JSONObject)((JSONObject)steps.get(i)).get("polyline")).get("points");
                 List<LatLng> list = decodePoly(polyline);
-                for(int k = 0; k < list.size(); k++){
-                    path.add(list.get(k));
-                }
+                path.addAll(list);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -80,7 +76,7 @@ public class GoogleMapsDirectionsClient {
     }
 
     private int getDurationInSeconds(JSONObject downloadedJSON){
-        JSONObject route = null;
+        JSONObject route;
 
         try {
             route = (JSONObject)downloadedJSON.getJSONArray("routes").get(0);
@@ -103,18 +99,11 @@ public class GoogleMapsDirectionsClient {
         this.downloadedJSON = null;
     }
 
-    public List<LatLng> calculatePath(){
+    public List<LatLng> calculatePath(String googleMapsKey){
         if (this.downloadedJSON == null){
-            this.download();
+            this.download(googleMapsKey);
         }
         return getPath(downloadedJSON);
-    }
-
-    public int calculateDurationInSeconds(){
-        if (this.downloadedJSON == null){
-            this.download();
-        }
-        return getDurationInSeconds(downloadedJSON);
     }
 
     /**
@@ -155,13 +144,14 @@ public class GoogleMapsDirectionsClient {
         return poly;
     }
 
-    private class DownloadTask extends AsyncTask<Void, Void, JSONObject>{
+    private class DownloadTask extends AsyncTask<String, Void, JSONObject>{
 
-        protected JSONObject doInBackground(Void... params) {
+        protected JSONObject doInBackground(String... params) {
             InputStream inputStream = null;
             HttpURLConnection urlConnection = null;
+            String key = params[0];
             try {
-                URL url = new URL(getDirectionsUrl(origin, destination));
+                URL url = new URL(getDirectionsUrl(origin, destination, key));
 
                 // Creating an http connection to communicate with url
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -171,7 +161,7 @@ public class GoogleMapsDirectionsClient {
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
                 StringBuilder result = new StringBuilder();
 
-                String line = "";
+                String line;
                 while ((line = br.readLine()) != null) {
                     result.append(line);
                 }

@@ -80,7 +80,7 @@ public class VilshofenMapActivity extends FragmentActivity implements OnMapReady
         for (int i = 1; i < p.getSightNumber(); i++){
             this.googleMapsPathfinder.setOrigin(new LatLng(p.getSightAt(i - 1).getDegreeOfLatitude(), p.getSightAt(i - 1).getDegreeOfLongitude()));
             this.googleMapsPathfinder.setDestination(new LatLng(p.getSightAt(i).getDegreeOfLatitude(), p.getSightAt(i).getDegreeOfLongitude()));
-            for (LatLng lng : this.googleMapsPathfinder.calculatePath()){
+            for (LatLng lng : this.googleMapsPathfinder.calculatePath(getApplicationContext().getString(R.string.google_maps_key))){
                 po.add(lng);
             }
         }

@@ -46,7 +46,7 @@ public class ChoosePredefinedRouteActivity extends AppCompatActivity implements 
         this.list.setAdapter(listAdapter);
     }
 
-    public void changeToMapActivity(){
+    private void changeToMapActivity(){
         Intent intent = new Intent(this, VilshofenMapActivity.class);
         intent.putExtra("path", this.pathChanger);
         intent.putExtra("sightManager", this.manager);

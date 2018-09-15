@@ -46,10 +46,6 @@
             android:name=".view.VilshofenMapActivity"
             android:label="@string/title_activity_vilshofen_map" />
         <activity
-            android:name=".view.StaticContextActivity"
-            android:label="@string/title_activity_static_context"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".view.SightDetailActivity"
             android:label="@string/title_activity_sight_detail"
             android:theme="@style/AppTheme.NoActionBar" />

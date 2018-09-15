@@ -3,6 +3,7 @@ package com.example.simon.vilshofenguide.view;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.simon.vilshofenguide.R;
@@ -10,10 +11,9 @@ import com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.control
 import com.example.simon.vilshofenguide.sightseeing.SightInitializer;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 
-import java.net.MalformedURLException;
 import java.util.concurrent.ExecutionException;
 
-public class StartActivity extends StaticContextActivity {
+public class StartActivity extends AppCompatActivity{
 
     private SightManager manager;
     private AsyncTask<?, ?, SightManager> sightTask = null;
@@ -23,7 +23,7 @@ public class StartActivity extends StaticContextActivity {
         super.onCreate(savedInstanceState);
         this.manager = (SightManager)getIntent().getSerializableExtra("sightManager");
         if (this.manager == null){
-            getSightManager();
+            startSightManagerDownload();
         }
         setContentView(R.layout.activity_start);
     }
@@ -43,14 +43,13 @@ public class StartActivity extends StaticContextActivity {
         startActivity(intent);
     }
 
-    private SightManager getSightManager(){
+    private void startSightManagerDownload(){
         SightInitializer s = new SightInitializer();
         try {
             sightTask = s.downloadSightManager();
         } catch (Exception e) {
             changeToErrorActivity(e);
         }
-        return null;
     }
 
     private void waitForManagerInitialized(){

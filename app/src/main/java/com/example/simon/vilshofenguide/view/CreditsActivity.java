@@ -73,20 +73,20 @@ public class CreditsActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void changeToSightList(){
+    private void changeToSightList(){
         Intent intent = new Intent(this, AllSightsActivity.class);
         intent.putExtra("sightManager", this.manager);
         startActivity(intent);
     }
 
-    public void changeToChoosePredefinedRoute(){
+    private void changeToChoosePredefinedRoute(){
         Intent intent = new Intent(this, ChoosePredefinedRouteActivity.class);
         intent.putExtra("path", new PathChangeController());
         intent.putExtra("sightManager", this.manager);
         startActivity(intent);
     }
 
-    public void changeToStartActivity(){
+    private void changeToStartActivity(){
         Intent intent = new Intent(this, StartActivity.class);
         intent.putExtra("sightManager", this.manager);
         startActivity(intent);
@@ -97,12 +97,16 @@ public class CreditsActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_routes) {
-            changeToChoosePredefinedRoute();
-        }else if (id==R.id.nav_sights){
-            changeToSightList();
-        }else if (id==R.id.back){
-            changeToStartActivity();
+        switch (id) {
+            case R.id.nav_routes:
+                changeToChoosePredefinedRoute();
+                break;
+            case R.id.nav_sights:
+                changeToSightList();
+                break;
+            case R.id.back:
+                changeToStartActivity();
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

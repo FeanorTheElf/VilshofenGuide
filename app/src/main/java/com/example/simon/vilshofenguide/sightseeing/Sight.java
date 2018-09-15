@@ -10,14 +10,14 @@ public class Sight implements Serializable{
 
     public static final boolean useEnglish = false;
 
-    private int id;
-    private Map<Category, Integer> points;
-    private String htmlFileName;
-    private double degreeOfLatitude;
-    private double degreeOfLongitude;
-    private String englishName;
-    private String germanName;
-    private double averageVisitDurationInMinutes;
+    private final int id;
+    private final Map<Category, Integer> points;
+    private final String htmlFileName;
+    private final double degreeOfLatitude;
+    private final double degreeOfLongitude;
+    private final String englishName;
+    private final String germanName;
+    private final double averageVisitDurationInMinutes;
 
     public boolean equals(Object that) {
         return that instanceof Sight && ((Sight) that).id == this.id;

@@ -9,14 +9,13 @@ import java.util.Map;
 
 public class ConfigurableSightManager implements SightManager, Serializable{
 
-    private Map<Integer, Sight> sights;
-    private List<NamedRoute> predefinedRoutes;
-    private Map<Sight, Map<Sight, Double>> distances;
-    private Map<Category, double[]> params = new HashMap<>();
+    private final Map<Integer, Sight> sights;
+    private final List<NamedRoute> predefinedRoutes;
+    private final Map<Sight, Map<Sight, Double>> distances;
+    private final Map<Category, double[]> params = new HashMap<>();
 
     public static ConfigurableSightManager getEmptySightManager(){
-        ConfigurableSightManager result = new ConfigurableSightManager();
-        return result;
+        return new ConfigurableSightManager();
     }
 
     public List<NamedRoute> getPredefinedRoutes(){
@@ -56,10 +55,10 @@ public class ConfigurableSightManager implements SightManager, Serializable{
         Sight sight2 = this.sights.get(id2);
 
         if (!this.distances.containsKey(sight1)) {
-            this.distances.put(sight1, new HashMap<Sight, Double>());
+            this.distances.put(sight1, new HashMap<>());
         }
         if (!this.distances.containsKey(sight2)) {
-            this.distances.put(sight2, new HashMap<Sight, Double>());
+            this.distances.put(sight2, new HashMap<>());
         }
         this.distances.get(sight1).put(sight2, distance);
         this.distances.get(sight2).put(sight1, distance);
@@ -75,10 +74,6 @@ public class ConfigurableSightManager implements SightManager, Serializable{
 
     public void setParam(Category c, double[] val){
         this.params.put(c, val);
-    }
-
-    public double[] getParam(Category c){
-        return this.params.get(c);
     }
 
     private ConfigurableSightManager(){

@@ -97,7 +97,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
      */
     private void showPath(Path p){
         if (p == null){
-            Toast.makeText(getApplicationContext(), StringRessourceManager.getInstance().getString(R.string.exception_no_such_route), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.exception_no_such_route), Toast.LENGTH_LONG).show();
             return;
         }
         ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, p.asList());
@@ -107,15 +107,14 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
 
     /**
      * Collects the information about the route in the form and informs the pathShower to calculate the best route
-     * @param v
      */
-    public void calculateRoute(View v){
-        int tripTime = -1;
+    public void calculateRoute(View view){
+        int tripTime;
         try{
             String endString = ((Spinner)findViewById(R.id.trip_time)).getSelectedItem().toString();
             tripTime = Integer.parseInt(endString.split(":")[0]) * 60 + Integer.parseInt(endString.split(":")[1]);
         }catch(Exception ex){
-            Toast.makeText(getApplicationContext(), StringRessourceManager.getInstance().getString(R.string.exception_trip_time_format), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.exception_trip_time_format), Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -137,13 +136,12 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
 
     /**
      * Shows the route on the map
-     * @param v
      */
-    public void viewOnMap(View v){
+    public void viewOnMap(View view){
         changeToMapActivity();
     }
 
-    public void changeToMapActivity(){
+    private void changeToMapActivity(){
         Intent intent = new Intent(this, VilshofenMapActivity.class);
         intent.putExtra("path", this.pathChanger);
         intent.putExtra("sightManager", this.manager);
@@ -206,7 +204,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
             case R.id.configure_sight_list_delete_item:
                 try {
                     this.pathChanger.itemDeleted(manager.getSightById(this.choosenSightIdInList), manager);
-                } catch (ExecutionException | InterruptedException e) {
+                } catch (Exception e) {
                     changeToErrorActivity(e);
                     return false;
                 }
@@ -229,7 +227,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
         for (Sight s : this.manager.getAllSights()){
             menu.getMenu().add(Menu.NONE, s.getId(), Menu.NONE, s.toString());
         }
-        menu.getMenu().add(Menu.NONE, R.id.configure_sight_list_cancel_context_menu, Menu.NONE, StringRessourceManager.getInstance().getString(R.string.cancel));
+        menu.getMenu().add(Menu.NONE, R.id.configure_sight_list_cancel_context_menu, Menu.NONE, getApplicationContext().getString(R.string.cancel));
         menu.setOnMenuItemClickListener(this);
         menu.show();
     }

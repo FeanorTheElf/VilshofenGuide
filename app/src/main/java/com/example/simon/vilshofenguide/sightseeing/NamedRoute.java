@@ -7,9 +7,9 @@ import java.io.Serializable;
  */
 public class NamedRoute implements Serializable{
 
-    private Path p;
-    private String englishName;
-    private String germanName;
+    private final Path p;
+    private final String englishName;
+    private final String germanName;
 
     public String toString(){
         return Sight.useEnglish?englishName:germanName;
@@ -25,7 +25,4 @@ public class NamedRoute implements Serializable{
         this.englishName = englishName;
     }
 
-    public NamedRoute(){
-        this(new Path(), "empty route", "leere route");
-    }
 }
