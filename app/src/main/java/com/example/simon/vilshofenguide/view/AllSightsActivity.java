@@ -11,7 +11,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.sightseeing.Category;
 import com.example.simon.vilshofenguide.sightseeing.Sight;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 

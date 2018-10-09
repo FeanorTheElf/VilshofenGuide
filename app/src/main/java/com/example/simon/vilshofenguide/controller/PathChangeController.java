@@ -8,7 +8,6 @@ import com.example.simon.vilshofenguide.sightseeing.TripConfigurations;
 import com.example.simon.vilshofenguide.view.PathShower;
 
 import java.io.Serializable;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Simon on 09.03.2016.

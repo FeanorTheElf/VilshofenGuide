@@ -12,7 +12,6 @@ public class ConfigurableSightManager implements SightManager, Serializable{
     private final Map<Integer, Sight> sights;
     private final List<NamedRoute> predefinedRoutes;
     private final Map<Sight, Map<Sight, Double>> distances;
-    private final Map<Category, double[]> params = new HashMap<>();
 
     public static ConfigurableSightManager getEmptySightManager(){
         return new ConfigurableSightManager();
@@ -70,10 +69,6 @@ public class ConfigurableSightManager implements SightManager, Serializable{
 
     public Collection<Sight> getAllSights() {
         return sights.values();
-    }
-
-    public void setParam(Category c, double[] val){
-        this.params.put(c, val);
     }
 
     private ConfigurableSightManager(){

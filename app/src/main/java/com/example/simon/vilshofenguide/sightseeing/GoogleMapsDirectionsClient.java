@@ -27,7 +27,7 @@ public class GoogleMapsDirectionsClient {
     private LatLng destination;
     private JSONObject downloadedJSON;
 
-    private String getDirectionsUrl(LatLng origin, LatLng dest, String googleMapsKey) {
+    private static String getDirectionsUrl(LatLng origin, LatLng dest, String googleMapsKey) {
 
         String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
         String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
@@ -43,7 +43,7 @@ public class GoogleMapsDirectionsClient {
     private void download(String googleMapsKey) {
         try {
             //Use get() as a method to join the task
-            this.downloadedJSON = new DownloadTask().execute(googleMapsKey).get();
+            this.downloadedJSON = new DownloadTask(origin, destination).execute(googleMapsKey).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -144,7 +144,15 @@ public class GoogleMapsDirectionsClient {
         return poly;
     }
 
-    private class DownloadTask extends AsyncTask<String, Void, JSONObject>{
+    private static class DownloadTask extends AsyncTask<String, Void, JSONObject>{
+
+        private LatLng origin;
+        private LatLng destination;
+
+        private DownloadTask(LatLng origin, LatLng destination) {
+            this.origin = origin;
+            this.destination = destination;
+        }
 
         protected JSONObject doInBackground(String... params) {
             InputStream inputStream = null;

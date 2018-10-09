@@ -57,12 +57,6 @@ class XMLSightLoader extends DefaultHandler {
             case "waypoint":
                 lastRouteSights.add(m.getSightById(Integer.parseInt(attributes.getValue("id"))));
                 break;
-            case "param":
-                double[] param = new double[attributes.getLength() - 1];
-                param[0] = Double.parseDouble(attributes.getValue("a"));
-                param[1] = Double.parseDouble(attributes.getValue("b"));
-                m.setParam(Category.valueOf(attributes.getValue("cat")), param);
-                break;
         }
     }
 

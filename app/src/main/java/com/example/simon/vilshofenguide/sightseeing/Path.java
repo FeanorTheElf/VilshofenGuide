@@ -25,10 +25,7 @@ public class Path implements Cloneable, Serializable, Iterable<Sight>{
     }
 
     public boolean equals(Object that) {
-        if (that.hashCode() != this.hashCode()) {
-            return false;
-        }
-        return that instanceof Path && ((Path) that).path.equals(this.path);
+        return that.hashCode() == this.hashCode() && that instanceof Path && ((Path) that).path.equals(this.path);
     }
 
     public List<Sight> asList(){
