@@ -24,13 +24,12 @@ import android.widget.Toast;
 import com.example.simon.vilshofenguide.R;
 import com.example.simon.vilshofenguide.sightseeing.Category;
 import com.example.simon.vilshofenguide.sightseeing.Path;
-import com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller.PathChangeController;
+import com.example.simon.vilshofenguide.controller.PathChangeController;
 import com.example.simon.vilshofenguide.sightseeing.Sight;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 import com.example.simon.vilshofenguide.sightseeing.TripConfigurations;
 
 import java.util.LinkedList;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Simon on 29.12.2015.
@@ -102,7 +101,7 @@ public class TripPlanActivity extends AppCompatActivity implements PathShower, P
         }
         ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, p.asList());
         this.choosenPathView.setAdapter(listAdapter);
-        TextView calculatedDepartureTime = (TextView)findViewById(R.id.calculated_departure_time);
+        Toast.makeText(this, String.format(getApplicationContext().getString(R.string.trip_plan_trip_duration), p.getLengthInMinutes()), Toast.LENGTH_LONG).show();
     }
 
     /**

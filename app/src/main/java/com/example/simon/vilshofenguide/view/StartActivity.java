@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller.PathChangeController;
+import com.example.simon.vilshofenguide.controller.PathChangeController;
 import com.example.simon.vilshofenguide.sightseeing.SightInitializer;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 

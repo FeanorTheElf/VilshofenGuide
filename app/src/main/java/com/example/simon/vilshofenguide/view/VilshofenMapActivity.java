@@ -8,7 +8,7 @@ import android.os.Bundle;
 import com.example.simon.vilshofenguide.R;
 import com.example.simon.vilshofenguide.sightseeing.GoogleMapsDirectionsClient;
 import com.example.simon.vilshofenguide.sightseeing.Path;
-import com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller.PathChangeController;
+import com.example.simon.vilshofenguide.controller.PathChangeController;
 import com.example.simon.vilshofenguide.sightseeing.Sight;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 import com.google.android.gms.maps.CameraUpdateFactory;

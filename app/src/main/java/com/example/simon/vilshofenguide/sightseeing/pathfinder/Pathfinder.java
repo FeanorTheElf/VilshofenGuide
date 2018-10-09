@@ -28,7 +28,8 @@ public class Pathfinder {
             Sight next = it.next();
             sum += manager.getDistanceInMinutes(current, next);
             current = next;
-            sum += current.getAverageVisitDurationInMinutes();
+            if (it.hasNext() || current != path.get(0))
+                sum += current.getAverageVisitDurationInMinutes();
         }
         return sum;
     }
@@ -78,7 +79,7 @@ public class Pathfinder {
         double currentMaxEval = Double.NEGATIVE_INFINITY;
         Sight result = null;
         for (Sight node : manager.getAllSights()){
-            if (!path.contains(node) && pathDist + distsToPath.get(node) + node.getAverageVisitDurationInMinutes() < maxDist){
+            if (!path.contains(node) && pathDist + distsToPath.get(node) < maxDist){
                 double eval = calcNodeEvaluation(node, maxDist - pathDist, distsToPath, c);
                 if (eval > currentMaxEval){
                     result = node;
@@ -110,6 +111,14 @@ public class Pathfinder {
         result.add(tc.getStartSight());
         result.add(tc.getEndSight());
 
+        for (Sight sight : tc.getIncludedSights()) {
+            int index = calcOptimalInsertBeforeIndex(result, sight);
+            result.add(index, sight);
+        }
+
+        if (calcPathDistance(result) > tc.getTotalTripMinutes())
+            return null;
+
         while(true){
             double pathDist = calcPathDistance(result);
             Map<Sight, Integer> bestInsertBeforeIndices = new HashMap<>();
@@ -118,7 +127,7 @@ public class Pathfinder {
 
             Sight newSight = findNodeWithMaxEvaluation(tc.getTotalTripMinutes(), result, pathDist, distancesToPath, tc.getCategory());
             if (newSight == null)
-                return new Path(result);
+                return new Path(result, calcPathDistance(result));
             result.add(bestInsertBeforeIndices.get(newSight), newSight);
         }
     }

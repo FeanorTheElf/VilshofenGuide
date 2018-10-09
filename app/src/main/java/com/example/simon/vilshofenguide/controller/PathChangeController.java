@@ -1,4 +1,4 @@
-package com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller;
+package com.example.simon.vilshofenguide.controller;
 
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 import com.example.simon.vilshofenguide.sightseeing.pathfinder.Pathfinder;

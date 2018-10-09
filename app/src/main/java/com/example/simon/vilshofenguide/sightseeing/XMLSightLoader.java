@@ -1,7 +1,6 @@
 package com.example.simon.vilshofenguide.sightseeing;
 
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.HashMap;
@@ -74,7 +73,7 @@ class XMLSightLoader extends DefaultHandler {
                     this.lastSightNameEN, this.lastSightNameDE,
                     this.lastSightNameHTML, this.lastSightVisitDuration));
         }else if (qName.equals("route")){
-            m.addRoute(new NamedRoute(new Path(new LinkedList<>(this.lastRouteSights)),
+            m.addRoute(new NamedRoute(new Path(new LinkedList<>(this.lastRouteSights), 0),
                     this.lastRouteEnglishName,
                     this.lastRouteGermanName));
         }

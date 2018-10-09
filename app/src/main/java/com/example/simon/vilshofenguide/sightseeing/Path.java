@@ -14,6 +14,7 @@ import java.util.List;
 public class Path implements Cloneable, Serializable, Iterable<Sight>{
 
     private List<Sight> path;
+    private double lengthInMinutes;
 
     public String toString(){
         StringBuilder result = new StringBuilder();
@@ -58,16 +59,21 @@ public class Path implements Cloneable, Serializable, Iterable<Sight>{
     }
 
     public Path(){
-        this(new LinkedList<>());
+        this(new LinkedList<>(), 0);
     }
 
-    public Path(List<Sight> path){
+    public Path(List<Sight> path, double lengthInMinutes){
         this.path = path;
+        this.lengthInMinutes = lengthInMinutes;
     }
 
     @NonNull
     @Override
     public Iterator<Sight> iterator() {
         return this.path.iterator();
+    }
+
+    public double getLengthInMinutes() {
+        return lengthInMinutes;
     }
 }

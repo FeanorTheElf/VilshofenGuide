@@ -34,6 +34,7 @@
     <string name="empty_route_name">Leere Route</string>
     <string name="title_activity_impressum">Impressum</string>
     <string name="sight">Sight</string>
+    <string name="trip_plan_trip_duration">Ihre Route dauert %4.2f Minuten</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_sehenswuerdigkeiten">Sightseeing</string>

@@ -7,7 +7,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.com.example.simon.vilshofenguide.controller.PathChangeController;
+import com.example.simon.vilshofenguide.controller.PathChangeController;
 import com.example.simon.vilshofenguide.sightseeing.Sight;
 import com.example.simon.vilshofenguide.sightseeing.SightInitializer;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
