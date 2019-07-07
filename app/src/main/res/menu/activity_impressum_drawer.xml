@@ -7,10 +7,6 @@
             android:icon="@drawable/kreis"
             android:title="@string/sightseeing" />
         <item
-            android:id="@+id/nav_routes"
-            android:icon="@drawable/kreis"
-            android:title="@string/predefined_routes_label" />
-        <item
             android:id="@+id/back"
             android:icon="@drawable/zurueckpfeil"
             android:title="@string/back_to_start"/>

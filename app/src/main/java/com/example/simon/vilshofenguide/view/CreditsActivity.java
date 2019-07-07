@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.controller.PathChangeController;
 import com.example.simon.vilshofenguide.sightseeing.SightManager;
 
 public class CreditsActivity extends AppCompatActivity
@@ -27,22 +26,22 @@ public class CreditsActivity extends AppCompatActivity
         this.manager = (SightManager)getIntent().getSerializableExtra("sightManager");
 
         setContentView(R.layout.activity_impressum);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -79,13 +78,6 @@ public class CreditsActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private void changeToChoosePredefinedRoute(){
-        Intent intent = new Intent(this, ChoosePredefinedRouteActivity.class);
-        intent.putExtra("path", new PathChangeController());
-        intent.putExtra("sightManager", this.manager);
-        startActivity(intent);
-    }
-
     private void changeToStartActivity(){
         Intent intent = new Intent(this, StartActivity.class);
         intent.putExtra("sightManager", this.manager);
@@ -98,9 +90,6 @@ public class CreditsActivity extends AppCompatActivity
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.nav_routes:
-                changeToChoosePredefinedRoute();
-                break;
             case R.id.nav_sights:
                 changeToSightList();
                 break;
@@ -109,7 +98,7 @@ public class CreditsActivity extends AppCompatActivity
                 break;
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

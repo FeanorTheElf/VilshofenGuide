@@ -2,11 +2,11 @@ package com.example.simon.vilshofenguide.view;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.example.simon.vilshofenguide.R;
-import com.example.simon.vilshofenguide.sightseeing.GoogleMapsDirectionsClient;
 import com.example.simon.vilshofenguide.sightseeing.Path;
 import com.example.simon.vilshofenguide.controller.PathChangeController;
 import com.example.simon.vilshofenguide.sightseeing.Sight;
@@ -26,7 +26,6 @@ public class VilshofenMapActivity extends FragmentActivity implements OnMapReady
     private PathChangeController pathChanger;
     private SightManager manager;
     private Sight lastClicked;
-    private GoogleMapsDirectionsClient googleMapsPathfinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,6 @@ public class VilshofenMapActivity extends FragmentActivity implements OnMapReady
             this.pathChanger = (PathChangeController)getIntent().getSerializableExtra("path");
         }
         this.manager = (SightManager)getIntent().getSerializableExtra("sightManager");
-        this.googleMapsPathfinder = new GoogleMapsDirectionsClient();
     }
 
     /**
@@ -76,17 +74,8 @@ public class VilshofenMapActivity extends FragmentActivity implements OnMapReady
 
     @Override
     public void setPath(Path p) {
-        PolylineOptions po = new PolylineOptions();
-        for (int i = 1; i < p.getSightNumber(); i++){
-            this.googleMapsPathfinder.setOrigin(new LatLng(p.getSightAt(i - 1).getDegreeOfLatitude(), p.getSightAt(i - 1).getDegreeOfLongitude()));
-            this.googleMapsPathfinder.setDestination(new LatLng(p.getSightAt(i).getDegreeOfLatitude(), p.getSightAt(i).getDegreeOfLongitude()));
-            for (LatLng lng : this.googleMapsPathfinder.calculatePath(getApplicationContext().getString(R.string.google_maps_key))){
-                po.add(lng);
-            }
-        }
         mMap.clear();
         this.createPathMarkers(p);
-        mMap.addPolyline(po.width(5).color(Color.RED));
     }
 
     private void changeToSightDetailActivity(Sight s){
