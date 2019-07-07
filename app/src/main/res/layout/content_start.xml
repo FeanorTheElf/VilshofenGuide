@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -8,51 +8,46 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".view.StartActivity"
-    tools:showIn="@layout/activity_start">
+    tools:showIn="@layout/activity_start"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_alignEnd="@+id/button"
-        android:layout_alignParentTop="true"
-        android:text="@string/app_title"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#5e5c5c"
-        android:textSize="40sp"
-        android:layout_alignRight="@+id/button" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="229dp"
+            android:layout_height="100dp"
+            android:text="@string/app_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#5e5c5c"
+            android:textSize="40sp" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/aaaaa"
+            android:layout_height="@dimen/aabb"
+            android:src="@drawable/logo3"
+            android:contentDescription="@string/vilshofen_guide_logo" />
+    </LinearLayout>
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="@dimen/zwidth"
-        android:layout_height="@dimen/zzzheight"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:id="@+id/button_trip_plan"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button"
         android:onClick="changeToTripPlanActivity"
         android:text="@string/routeplaner"
         android:textColor="#ffffff" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="@dimen/zwidth"
-        android:layout_height="@dimen/zzzheight"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/button"
-        android:onClick="changeToCreditsActivity"
-        android:text="@string/credits"
-        android:textColor="#ffffff" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="@dimen/zwidth"
-        android:layout_height="@dimen/zzzheight"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150dp"
+        android:id="@+id/button_vilshofen_map"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button"
         android:onClick="changeToVilshofenMap"
         android:text="@string/map"
@@ -60,24 +55,21 @@
 
     <Button
         android:id="@+id/choose_sight"
-        android:layout_width="@dimen/zwidth"
-        android:layout_height="@dimen/zzzheight"
-        android:layout_centerInParent="true"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button"
         android:onClick="changeToChooseSightActivity"
         android:text="@string/sights"
         android:textColor="#ffffff" />
 
-    <ImageView
-        android:layout_width="@dimen/aaaaa"
-        android:layout_height="@dimen/aabb"
-        android:id="@+id/imageView4"
-        android:src="@drawable/logo3"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp" />
-
-</RelativeLayout>
+    <Button
+        android:id="@+id/button_credits"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button"
+        android:onClick="changeToCreditsActivity"
+        android:text="@string/credits"
+        android:textColor="#ffffff" />
+</LinearLayout>
