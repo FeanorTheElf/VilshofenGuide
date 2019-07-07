@@ -61,7 +61,8 @@
             android:name=".view.AllSightsActivity"
             android:label="@string/title_activity_sehenswuerdigkeiten"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.ErrorActivity"></activity>
+        <activity android:name=".view.ErrorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
